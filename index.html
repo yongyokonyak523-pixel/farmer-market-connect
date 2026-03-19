@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farmer Market Connect</title>
+    <link rel="stylesheet" href="style.css">
+    <div id="loader">
+    <h1>🌱 Farmer Market Connect</h1>
+</div>
+</head>
+<body>
+
+    <nav>
+        <h2>FMC</h2>
+        <nav class="navbar">
+
+
+
+  
+</nav>
+        <ul>
+            
+             <li><a  href="index.html">Home</a></li>
+             <li><a href="about.html">About</a></li>
+            
+             <li><a  href="upload.html">Upload</a></li>
+             <li><a  href="cart.html">Cart</a></li>
+             <li ><a href="login.html">Login</a></li>
+             <li><a href="contact.html">Contact</a></li>
+
+    
+        </ul>
+    </nav>
+
+    
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Fresh Farm Products</h1>
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProduct()">
+    </section>
+    <div class="controls">
+    <select id="categoryFilter" onchange="filterProducts()">
+        <option value="All">All Categories</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Berries">Berries</option>
+    </select>
+
+    <select id="sortPrice" onchange="sortProducts()">
+        <option value="default">Sort By Price</option>
+        <option value="low">Low to High</option>
+        <option value="high">High to Low</option>
+    </select>
+</div>
+
+    <!-- Products Section -->
+    <section class="products-container" id="productList">
+    </section>
+<script src="script.js"></script>
+   
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us - Farmer Market Connect</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .contact-container {
+            width: 80%;
+            margin: 40px auto;
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .map {
+            margin-top: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background: #2e7d32;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #ffeb3b;
+}
+
+    </style>
+</head>
+<body>
+<header>
+    <h2 class="logo">Farmer Market Connect</h2>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        
+        <a href="upload.html">Upload</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+
+<div class="contact-container">
+
+    <!-- LEFT SIDE FORM -->
+    <div class="contact-form">
+        <h2>Contact Us</h2>
+
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="successMsg" class="success"></div>
+        </form>
+    </div>
+
+    <!-- RIGHT SIDE INFO -->
+    <div class="contact-info">
+        <h2>Our Information</h2>
+        <p><strong>Address:</strong> Farmer Market Connect, India</p>
+        <p><strong>Email:</strong> support@farmerconnect.com</p>
+        <p><strong>Phone:</strong> +91 9876543210</p>
+
+        <div class="map">
+            <iframe 
+                src="https://maps.google.com/maps?q=india&t=&z=5&ie=UTF8&iwloc=&output=embed"
+                height="250">
+            </iframe>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    document.getElementById("successMsg").innerText = 
+        "Message Sent Successfully ✅";
+
+    this.reset();
+});
+</script>
+
+</body>
+</html>

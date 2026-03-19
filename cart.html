@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Market Connect - Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f3f6;
+        }
+
+        header {
+            background: #2e7d32;
+            color: white;
+            padding: 15px 30px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .cart-items {
+            flex: 3;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-details h3 {
+            margin: 0;
+        }
+
+        .price {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .remove-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .price-details {
+            flex: 1;
+            background: rgb(242, 241, 241);
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #ff9f00;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        header {
+    background: #2e7d32;
+    color: white;
+    padding: 15px 30px;
+
+    display: flex;
+    justify-content: space-between;  /* pushes content left & right */
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+    </style>
+</head>
+<body>
+    
+<header>
+    <h2>Farmer Market Connect</h2>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        
+        <a href="upload.html">Upload</a>
+        <a href="cart.html">Cart</a>
+        <a href="login.html">Login</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+
+<div class="container">
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <div class="price-details">
+        <h3>PRICE DETAILS</h3>
+
+        <div class="price-row">
+            <span>Price</span>
+            <span id="totalPrice">₹0</span>
+        </div>
+
+        <div class="price-row">
+            <span>Delivery</span>
+            <span style="color:green;">FREE</span>
+        </div>
+
+        <div class="price-row total">
+            <span>Total Amount</span>
+            <span id="finalTotal">₹0</span>
+        </div>
+
+        <button class="checkout-btn">PLACE ORDER</button>
+    </div>
+
+</div>
+
+<script>
+function loadCart() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cartContainer = document.getElementById("cartItems");
+    let total = 0;
+
+    cartContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<h3>Your Cart is Empty</h3>";
+        document.getElementById("totalPrice").innerText = "₹0";
+        document.getElementById("finalTotal").innerText = "₹0";
+        return;
+    }
+
+    cart.forEach((item, index) => {
+
+        total += item.price * item.quantity;
+
+        cartContainer.innerHTML += `
+            <div class="cart-item">
+                <img src="${item.image}" width="80">
+                <div class="item-details">
+                    <h3>${item.name}</h3>
+                    <p>₹${item.price}</p>
+
+                    <div class="quantity-box">
+                        <button onclick="changeQty(${index}, -1)">−</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQty(${index}, 1)">+</button>
+                    </div>
+                </div>
+
+                <button onclick="removeItem(${index})">Remove</button>
+            </div>
+        `;
+    });
+
+    document.getElementById("totalPrice").innerText = "₹" + total;
+    document.getElementById("finalTotal").innerText = "₹" + total;
+}
+
+function changeQty(index, change) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart[index].quantity += change;
+
+    if (cart[index].quantity < 1) {
+        cart[index].quantity = 1;
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+}
+
+function removeItem(index) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+}
+
+loadCart();
+</script>

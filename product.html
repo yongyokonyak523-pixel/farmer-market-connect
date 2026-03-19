@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products - Farmer Market Connect</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+function addToCart(name, price, image) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        image: image
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Product Added To Cart ✅");
+}
+</script>
+
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h2>Farmer Market Connect</h2>
+        <ul>
+            
+             <li><a  href="index.html">Home</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a  href="product.html">Products</a></li>
+             <li><a  href="upload.html">Upload</a></li>
+             <li><a  href="cart.html">Cart</a></li>
+             <li ><a href="login.html">Login</a></li>
+             <li><a href="contact.html">Contact</a></li>
+
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Fresh Farm Products</h1>
+        <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProduct()">
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-container" id="productList">
+
+        <div class="product-card">
+    <img src="https://media.istockphoto.com/id/2206500567/photo/several-small-ripe-fresh-tomatoes-or-tomatoes-of-red-orange-color-in-a-close-up-in-a-box.webp?a=1&b=1&s=612x612&w=0&k=20&c=nSD2hrgzGz_xyp2-2CDRm4_BCge0y5XXHNAqmCS5U0M=" alt="Tomato">
+    <h3>Fresh Tomato</h3>
+    <p>₹40 / kg</p>
+    
+    <button onclick="addToCart('Fresh Tomato', 40,'https://media.istockphoto.com/id/2206500567/photo/several-small-ripe-fresh-tomatoes-or-tomatoes-of-red-orange-color-in-a-close-up-in-a-box.webp?a=1&b=1&s=612x612&w=0&k=20&c=nSD2hrgzGz_xyp2-2CDRm4_BCge0y5XXHNAqmCS5U0M=')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="https://images.unsplash.com/photo-1563012678-bdfec255931b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBvdGF0b2VzfGVufDB8fDB8fHww" alt="Potato">
+    <h3>Organic Potato</h3>
+    <p>₹30 / kg</p>
+    <button onclick="addToCart('Organic Potato', 30,'https://images.unsplash.com/photo-1563012678-bdfec255931b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBvdGF0b2VzfGVufDB8fDB8fHww')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="https://media.istockphoto.com/id/1161499893/photo/fresh-clean-yam-on-the-market-cara.jpg?s=612x612&w=0&k=20&c=L-T6PyCaFYzyg77zfuThAxETHTKqbMevSTsW2w9nqwE=" alt="Yam">
+    <h3>Yam</h3>
+    <p>₹50 / kg</p>
+    <button onclick="addToCart('Yam', 50.,'https://media.istockphoto.com/id/1161499893/photo/fresh-clean-yam-on-the-market-cara.jpg?s=612x612&w=0&k=20&c=L-T6PyCaFYzyg77zfuThAxETHTKqbMevSTsW2w9nqwE=')">Add to Cart</button>
+</div>
+
+<div class="product-card">
+    <img src="https://thumbs.dreamstime.com/b/red-onions-crop-texture-22156609.jpg" alt="Onion">
+    <h3>Onion</h3>
+    <p>₹35 / kg</p>
+    <button onclick="addToCart('Onion', 35,'https://thumbs.dreamstime.com/b/red-onions-crop-texture-22156609.jpg')">Add to Cart</button>
+</div>
+
+
+
+    </section>
+
+    <footer>
+        <p>© 2026 Farmer Market Connect | College Project</p>
+    </footer>
+
+<script src="script.js"></script>
+<script>
+function addToCart(name, price, image) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name: name,
+        price: price,
+        image: image
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Added to Cart ✅");
+}
+</script>
+
+</body>
+</html>
